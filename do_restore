@@ -1,0 +1,15 @@
+#!/bin/sh 
+
+VERSION=$1
+LOGDIR=/tmp/rplace
+WRITE_FILE=$LOGDIR/writes/$VERSION.writes
+
+echo Restoring $VERSION
+echo Restoring snapshot...
+
+echo restore $VERSION | nc localhost 8001
+
+sleep 1
+echo Restoring  writes
+
+cat $WRITE_FILE | nc localhost 8001

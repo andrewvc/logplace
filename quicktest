@@ -1,0 +1,2 @@
+#!/bin/sh -ex
+time ruby gen_requests 10000 10000 | nc localhost 8001

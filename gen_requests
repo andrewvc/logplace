@@ -6,6 +6,9 @@ users = num_users.times.map {|t| "ARandomUser#{t}"}
 
 mutex = Mutex.new
 
+# Initial snapshot of empty canvas
+puts "snapshot now"
+sleep 1
 stop = false
 Thread.new do
   while !stop
