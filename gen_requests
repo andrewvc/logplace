@@ -1,0 +1,25 @@
+num_requests = $ARGV[0].to_i
+num_users = $ARGV[1].to_i
+snapshot_every = 100000
+
+users = num_users.times.map {|t| "ARandomUser#{t}"}
+
+mutex = Mutex.new
+
+stop = false
+Thread.new do
+  while !stop
+    sleep 10
+    mutex.synchronize do
+      puts "snapshot now"
+    end
+  end
+end
+
+num_requests.times do |t|
+  user = users.sample
+  mutex.synchronize do
+    puts "write #{user} #{Time.now.to_i} #{rand(1000)} #{rand(1000)} AABBCC"
+  end
+end
+stop = true

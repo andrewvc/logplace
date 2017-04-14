@@ -1,0 +1,2 @@
+#!/bin/sh -ex
+echo snapshot now | nc localhost 8001
